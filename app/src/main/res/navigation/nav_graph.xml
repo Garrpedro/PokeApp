@@ -3,17 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/pokemonListFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.pokeapp.view.ui.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/pokemonListFragment"
+        android:name="com.example.pokeapp.view.ui.PokemonListFragment"
+        android:label="pokemon_list_fragment"
+        tools:layout="@layout/pokemon_list_fragment">
+        <action
+            android:id="@+id/action_pokemonListFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pokemonDetailFragment"
         android:name="com.example.pokeapp.view.ui.PokemonDetailFragment"
         android:label="pokemon_detail_fragment"
-        tools:layout="@layout/pokemon_detail_fragment" >
-    </fragment>
+        tools:layout="@layout/pokemon_detail_fragment" />
 </navigation>

@@ -1,4 +1,45 @@
 package com.example.pokeapp.service.model
 
-class Pokemon {
-}
+import java.util.*
+
+data class Pokemon(
+    val abilities: List<Ability>,
+    val base_experience: String,
+    val height: String,
+    //TODO see tomorrow the correct object
+    val held_items: List<Objects>,
+    val id: Int,
+    val is_default: Boolean,
+    val location_area_encounters: String,
+    //TODO see tomorrow the correct object
+    val moves: List<Objects>,
+    val name: String,
+    val order: Int,
+    val specie: Specie,
+    val sprites: Sprites,
+    val weight: String
+)
+
+//TODO see tomorrow the rest objects
+data class Sprites(
+    val back_default: String,
+    val back_female: String,
+    val back_shiny: String,
+    val back_shiny_female: String,
+    val front_default: String,
+    val front_female: String,
+    val front_shiny: String,
+    val front_shiny_female: String
+)
+
+data class Specie(
+    val name: String,
+    val url: String
+)
+
+data class Ability(
+    val name: String,
+    val url: String,
+    val is_hidden: Boolean,
+    val slot: Int
+)

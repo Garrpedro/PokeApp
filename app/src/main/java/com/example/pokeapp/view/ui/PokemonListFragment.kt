@@ -11,11 +11,12 @@ import com.example.pokeapp.viewmodel.PokemonListViewModel
 
 class PokemonListFragment : Fragment() {
 
+    private lateinit var viewModel: PokemonListViewModel
+
     companion object {
         fun newInstance() = PokemonListFragment()
-    }
 
-    private lateinit var viewModel: PokemonListViewModel
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
