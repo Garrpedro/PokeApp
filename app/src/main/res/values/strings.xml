@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PokeApp</string>
+
+    <string name="item_pokemon_list">%d - %s</string>
 </resources>
