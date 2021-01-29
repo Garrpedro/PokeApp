@@ -51,14 +51,8 @@ class PokemonListFragment : Fragment() {
         if (viewModel != null) {
             adapter = PokemonListAdapter(binding.pokemonListFrag!!)
             val layoutManager = LinearLayoutManager(activity)
-            grid_pokemon.layoutManager = layoutManager
-            grid_pokemon.addItemDecoration(
-                DividerItemDecoration(
-                    activity,
-                    layoutManager.orientation
-                )
-            )
-            grid_pokemon.adapter = adapter
+            pokemon_list_rc.layoutManager = layoutManager
+            pokemon_list_rc.adapter = adapter
         }
 
     }

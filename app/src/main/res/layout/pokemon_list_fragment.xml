@@ -16,7 +16,8 @@
         tools:context=".view.ui.PokemonListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/grid_pokemon"
+            android:id="@+id/pokemon_list_rc"
+            android:background="@color/color_ffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

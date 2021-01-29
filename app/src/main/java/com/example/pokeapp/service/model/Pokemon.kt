@@ -17,6 +17,7 @@ data class Pokemon(
     val order: Int,
     val specie: Specie,
     val sprites: Sprites,
+    val types: List<TypePokemon>,
     val weight: String
 )
 
@@ -42,4 +43,15 @@ data class Ability(
     val url: String,
     val is_hidden: Boolean,
     val slot: Int
+)
+
+
+data class TypePokemon(
+    val slot: Int,
+    val type: CommonResource
+)
+
+data class CommonResource(
+    val name: String,
+    val url: String
 )

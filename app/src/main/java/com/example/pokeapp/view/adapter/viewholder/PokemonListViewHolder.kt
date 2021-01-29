@@ -1,6 +1,6 @@
+@file:JvmName("TextUtils")
 package com.example.pokeapp.view.adapter.viewholder
 
-import android.view.View
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
@@ -24,11 +24,16 @@ class PokemonListViewHolder constructor(
         dataBinding.executePendingBindings()
 
         txtPokemonName.text =
-            itemView.context.getString(R.string.item_pokemon_list, (position + 1), result.name)
+            itemView.context.getString(
+                R.string.item_pokemon_list,
+                (position + 1),
+                result.name.capitalize()
+            )
 
         itemView.setOnClickListener() {
             val bundle = bundleOf("name" to result.name)
-            itemView.findNavController().navigate(R.id.action_pokemonListFragment_to_pokemonDetailFragment, bundle)
+            itemView.findNavController()
+                .navigate(R.id.action_pokemonListFragment_to_pokemonDetailFragment, bundle)
         }
     }
 }

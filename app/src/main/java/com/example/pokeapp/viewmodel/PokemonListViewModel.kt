@@ -10,7 +10,7 @@ class PokemonListViewModel : ViewModel() {
     val pokemonListLive = MutableLiveData<PokemonList>()
 
     fun getPokemonList() {
-        PokeRepository.getInstance().getPokemonList(0, 100) { isSuccess, response ->
+        PokeRepository.getInstance().getPokemonList(0, 20) { isSuccess, response ->
             if (isSuccess) {
                 pokemonListLive.value = response
                 Log.d("PokemonListViewModel", response?.next + " - " + response?.count)
