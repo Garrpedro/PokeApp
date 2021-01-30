@@ -1,5 +1,7 @@
 package com.example.pokeapp.service.repository
 
+import com.example.pokeapp.utils.Constant.BASE_URL
+import com.example.pokeapp.utils.Constant.REQUEST_TIMEOUT_DURATION
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -8,8 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object PokeApiInstance {
-    private val BASE_URL = "https://pokeapi.co/api/v2/"
-    val REQUEST_TIMEOUT_DURATION = 10
 
     val pokeInstance: PokeApiInterface = Retrofit.Builder().run {
         val gson = GsonBuilder()

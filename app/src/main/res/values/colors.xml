@@ -7,5 +7,8 @@
     <color name="color_ffffff">#FFFFFF</color>
     <color name="color_000000">#000000</color>
     <color name="color_b1b8bc">#B1B8BC</color>
-
+    <color name="color_00ff00">#00FF00</color>
+    <color name="color_0db1b8bc">#0DB1B8BC</color>
+    <color name="color_cf1b48">#CF1B48</color>
+    <color name="color_ffa500">#FFA500</color>
 </resources>

@@ -10,7 +10,7 @@ import com.example.pokeapp.viewmodel.PokemonListViewModel
 
 class PokemonListAdapter(private val pokeListViewModel: PokemonListViewModel) :
     RecyclerView.Adapter<PokemonListViewHolder>() {
-    var pokemonList: List<Result> = emptyList()
+    private var pokemonList: MutableList<Any> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -22,11 +22,11 @@ class PokemonListAdapter(private val pokeListViewModel: PokemonListViewModel) :
 
 
     override fun onBindViewHolder(holder: PokemonListViewHolder, position: Int) {
-        holder.setup(pokemonList[position], position)
+        holder.setup(pokemonList[position] as Result, position)
     }
 
     fun updateList(pokemonList: List<Result>) {
-        this.pokemonList = pokemonList
+        this.pokemonList.addAll(pokemonList)
         notifyDataSetChanged()
     }
 

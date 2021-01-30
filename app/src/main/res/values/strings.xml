@@ -2,6 +2,14 @@
     <string name="app_name">PokeApp</string>
 
     <string name="item_pokemon_list">%d - %s</string>
-    <string name="pokemon_detail_height">HT %s</string>
-    <string name="pokemon_detail_weight">WT %s</string>
+    <string name="pokemon_detail_name">Name: %s</string>
+    <string name="pokemon_detail_type">Type: %s</string>
+    <string name="pokemon_detail_height">HT: %s</string>
+    <string name="pokemon_detail_weight">WT: %s</string>
+    <string name="pokemon_detail_attack">Attack: %s</string>
+    <string name="pokemon_detail_defense">Defense: %s</string>
+    <string name="pokemon_detail_sp_attack">SP. Atk: %s</string>
+    <string name="pokemon_detail_sp_defense">SP. Def: %s</string>
+    <string name="pokemon_detail_speed">Speed: %s</string>
+    <string name="pokemon_detail_hp">HP: %s/%s</string>
 </resources>

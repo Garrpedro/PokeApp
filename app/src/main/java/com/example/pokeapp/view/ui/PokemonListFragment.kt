@@ -4,18 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokeapp.databinding.PokemonListFragmentBinding
+import com.example.pokeapp.view.adapter.PaginationScrollListener
 import com.example.pokeapp.view.adapter.PokemonListAdapter
 import com.example.pokeapp.viewmodel.PokemonListViewModel
 import kotlinx.android.synthetic.main.pokemon_list_fragment.*
 
 class PokemonListFragment : Fragment() {
 
+
+    var isLastPage: Boolean = false
+    var isLoading: Boolean = false
     private lateinit var adapter: PokemonListAdapter
     private lateinit var binding: PokemonListFragmentBinding
 
@@ -28,6 +32,7 @@ class PokemonListFragment : Fragment() {
                 .get(PokemonListViewModel::class.java)
             lifecycleOwner = viewLifecycleOwner
         }
+        (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         return binding.root
     }
 
@@ -41,6 +46,8 @@ class PokemonListFragment : Fragment() {
 
     private fun setupObservers() {
         binding.pokemonListFrag?.pokemonListLive?.observe(viewLifecycleOwner, Observer {
+            isLoading = false
+            progressbar.visibility = View.GONE
             adapter.updateList(it.results)
         })
 
@@ -51,9 +58,31 @@ class PokemonListFragment : Fragment() {
         if (viewModel != null) {
             adapter = PokemonListAdapter(binding.pokemonListFrag!!)
             val layoutManager = LinearLayoutManager(activity)
+            pokemon_list_rc?.addOnScrollListener(
+                object : PaginationScrollListener(layoutManager) {
+                    override fun isLastPage(): Boolean {
+                        return isLastPage
+                    }
+
+                    override fun isLoading(): Boolean {
+                        return isLoading
+                    }
+
+                    override fun loadMoreItems() {
+                        isLoading = true
+                        //you have to call load more items to get more data
+                        getMoreItems()
+                    }
+                })
             pokemon_list_rc.layoutManager = layoutManager
             pokemon_list_rc.adapter = adapter
         }
+    }
 
+
+    fun getMoreItems() {
+        progressbar.visibility = View.VISIBLE
+        binding.pokemonListFrag?.addOffset(20)
+        binding.pokemonListFrag?.getPokemonList()
     }
 }

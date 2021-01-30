@@ -1,6 +1,8 @@
 @file:JvmName("TextUtils")
+
 package com.example.pokeapp.view.adapter.viewholder
 
+import android.view.View
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
@@ -22,6 +24,8 @@ class PokemonListViewHolder constructor(
     fun setup(result: Result, position: Int) {
         dataBinding.setVariable(BR.itemPokemonListResult, result)
         dataBinding.executePendingBindings()
+
+        txtPokemonName.visibility = View.VISIBLE
 
         txtPokemonName.text =
             itemView.context.getString(

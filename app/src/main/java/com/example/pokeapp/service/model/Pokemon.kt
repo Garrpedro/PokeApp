@@ -15,6 +15,7 @@ data class Pokemon(
     val moves: List<Objects>,
     val name: String,
     val order: Int,
+    val stats: List<Stat>,
     val specie: Specie,
     val sprites: Sprites,
     val types: List<TypePokemon>,
@@ -30,7 +31,9 @@ data class Sprites(
     val front_default: String,
     val front_female: String,
     val front_shiny: String,
-    val front_shiny_female: String
+    val front_shiny_female: String,
+    val other: Other
+
 )
 
 data class Specie(
@@ -43,6 +46,26 @@ data class Ability(
     val url: String,
     val is_hidden: Boolean,
     val slot: Int
+)
+
+data class Stat(
+    val base_stat: Int,
+    val effort: Int,
+    val stat: CommonResource
+)
+
+data class Other(
+    val dream_world: DreamWorld,
+    val official_artwork: OfficalArtWork
+)
+
+data class OfficalArtWork(
+    val front_default: String
+)
+
+data class DreamWorld(
+    val front_default: String,
+    val front_female: String
 )
 
 

@@ -9,7 +9,7 @@ import com.example.pokeapp.service.repository.PokeRepository
 class PokemonDetailViewModel : ViewModel() {
     val pokemonDetailLive = MutableLiveData<Pokemon>()
 
-    fun getPokemonDetail(name : String) {
+    fun getPokemonDetail(name: String) {
         PokeRepository.getInstance().getPokemonDetail(name) { isSuccess, response ->
             if (isSuccess) {
                 pokemonDetailLive.value = response
