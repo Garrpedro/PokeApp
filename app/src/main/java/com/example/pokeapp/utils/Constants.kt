@@ -11,4 +11,5 @@ object Constant {
     const val SP_ATK = "special-attack"
     const val SP_DEF = "special-defense"
     const val SPEED = "speed"
+    const val POKEMON = "Pokemon"
 }

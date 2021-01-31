@@ -10,10 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokeapp.databinding.PokemonListFragmentBinding
+import com.example.pokeapp.service.model.Pokemon
+import com.example.pokeapp.utils.Constant.LIMIT
 import com.example.pokeapp.view.adapter.PaginationScrollListener
 import com.example.pokeapp.view.adapter.PokemonListAdapter
 import com.example.pokeapp.viewmodel.PokemonListViewModel
 import kotlinx.android.synthetic.main.pokemon_list_fragment.*
+import java.util.*
 
 class PokemonListFragment : Fragment() {
 
@@ -21,42 +24,46 @@ class PokemonListFragment : Fragment() {
     var isLastPage: Boolean = false
     var isLoading: Boolean = false
     private lateinit var adapter: PokemonListAdapter
-    private lateinit var binding: PokemonListFragmentBinding
+    private var binding: PokemonListFragmentBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = PokemonListFragmentBinding.inflate(inflater, container, false).apply {
-            pokemonListFrag = ViewModelProvider(this@PokemonListFragment)
-                .get(PokemonListViewModel::class.java)
-            lifecycleOwner = viewLifecycleOwner
+        if (binding == null) {
+            binding = PokemonListFragmentBinding.inflate(inflater, container, false).apply {
+                pokemonListFrag = ViewModelProvider(this@PokemonListFragment)
+                    .get(PokemonListViewModel::class.java)
+                lifecycleOwner = viewLifecycleOwner
+            }
         }
         (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        return binding.root
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.pokemonListFrag?.getPokemonList()
+        if (binding?.pokemonListFrag?.getPokemonLisAllSize()!! == 0) {
+            binding?.pokemonListFrag?.getPokemonList()
 
-        setupAdapter()
+            setupAdapter()
+        }
         setupObservers()
     }
 
     private fun setupObservers() {
-        binding.pokemonListFrag?.pokemonListLive?.observe(viewLifecycleOwner, Observer {
+        binding?.pokemonListFrag?.pokemonDetailLive?.observe(viewLifecycleOwner, Observer {
             isLoading = false
             progressbar.visibility = View.GONE
-            adapter.updateList(it.results)
-        })
+            adapter.updateList(it)
 
+        })
     }
 
     private fun setupAdapter() {
-        val viewModel = binding.pokemonListFrag
+        val viewModel = binding?.pokemonListFrag
         if (viewModel != null) {
-            adapter = PokemonListAdapter(binding.pokemonListFrag!!)
+            adapter = PokemonListAdapter(binding?.pokemonListFrag!!)
             val layoutManager = LinearLayoutManager(activity)
             pokemon_list_rc?.addOnScrollListener(
                 object : PaginationScrollListener(layoutManager) {
@@ -81,8 +88,9 @@ class PokemonListFragment : Fragment() {
 
 
     fun getMoreItems() {
+        binding?.pokemonListFrag?.loadMore = true
         progressbar.visibility = View.VISIBLE
-        binding.pokemonListFrag?.addOffset(20)
-        binding.pokemonListFrag?.getPokemonList()
+        binding?.pokemonListFrag?.addOffset(LIMIT)
+        binding?.pokemonListFrag?.getPokemonList()
     }
 }

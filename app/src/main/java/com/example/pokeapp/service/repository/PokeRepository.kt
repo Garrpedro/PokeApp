@@ -34,7 +34,7 @@ class PokeRepository {
     // GET pokemon list
     fun getPokemonDetail(
         name: String,
-        onResult: (isSuccess: Boolean, response: Pokemon?) -> Unit
+        onResult: (Boolean, Pokemon?) -> Unit
     ) {
 
         PokeApiInstance.pokeInstance.getPokemon(name)

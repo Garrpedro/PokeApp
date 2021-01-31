@@ -6,12 +6,10 @@ data class Pokemon(
     val abilities: List<Ability>,
     val base_experience: String,
     val height: String,
-    //TODO see tomorrow the correct object
     val held_items: List<Objects>,
     val id: Int,
     val is_default: Boolean,
     val location_area_encounters: String,
-    //TODO see tomorrow the correct object
     val moves: List<Objects>,
     val name: String,
     val order: Int,
@@ -22,7 +20,6 @@ data class Pokemon(
     val weight: String
 )
 
-//TODO see tomorrow the rest objects
 data class Sprites(
     val back_default: String,
     val back_female: String,

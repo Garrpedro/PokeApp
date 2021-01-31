@@ -1,16 +1,20 @@
-@file:JvmName("TextUtils")
+@file:JvmName("GuiUtils")
 
 package com.example.pokeapp.view.adapter.viewholder
 
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.core.os.bundleOf
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokeapp.BR
 import com.example.pokeapp.R
-import com.example.pokeapp.service.model.Result
+import com.example.pokeapp.service.model.Pokemon
+import com.example.pokeapp.service.model.PokemonHelper
+import com.example.pokeapp.utils.Constant.POKEMON
+import com.example.pokeapp.utils.GuiUtils.loadSvg
 import com.example.pokeapp.viewmodel.PokemonListViewModel
 import kotlinx.android.synthetic.main.item_pokemon_list.view.*
 
@@ -20,22 +24,29 @@ class PokemonListViewHolder constructor(
 ) : RecyclerView.ViewHolder(dataBinding.root) {
 
     private val txtPokemonName: TextView = itemView.item_pokemon_list_txt
+    private val imgPokemon: AppCompatImageView = itemView.item_pokemon_list_img
 
-    fun setup(result: Result, position: Int) {
+
+    fun setup(result: Pokemon, position: Int) {
         dataBinding.setVariable(BR.itemPokemonListResult, result)
         dataBinding.executePendingBindings()
 
         txtPokemonName.visibility = View.VISIBLE
+        imgPokemon.visibility = View.VISIBLE
 
         txtPokemonName.text =
             itemView.context.getString(
                 R.string.item_pokemon_list,
-                (position + 1),
+                result.id,
                 result.name.capitalize()
             )
 
+
+        imgPokemon.loadSvg(result.sprites.other.dream_world.front_default)
+
         itemView.setOnClickListener() {
-            val bundle = bundleOf("name" to result.name)
+            val bundle = Bundle(1)
+            bundle.putSerializable(POKEMON, PokemonHelper(result, itemView.context))
             itemView.findNavController()
                 .navigate(R.id.action_pokemonListFragment_to_pokemonDetailFragment, bundle)
         }

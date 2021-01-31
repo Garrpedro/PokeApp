@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokeapp.databinding.ItemPokemonListBinding
-import com.example.pokeapp.service.model.Result
+import com.example.pokeapp.service.model.Pokemon
 import com.example.pokeapp.view.adapter.viewholder.PokemonListViewHolder
 import com.example.pokeapp.viewmodel.PokemonListViewModel
+import java.util.*
 
 class PokemonListAdapter(private val pokeListViewModel: PokemonListViewModel) :
     RecyclerView.Adapter<PokemonListViewHolder>() {
@@ -22,12 +23,14 @@ class PokemonListAdapter(private val pokeListViewModel: PokemonListViewModel) :
 
 
     override fun onBindViewHolder(holder: PokemonListViewHolder, position: Int) {
-        holder.setup(pokemonList[position] as Result, position)
+        holder.setup(pokemonList[position] as Pokemon, position)
     }
 
-    fun updateList(pokemonList: List<Result>) {
-        this.pokemonList.addAll(pokemonList)
-        notifyDataSetChanged()
+    fun updateList(pokemonList: LinkedList<Pokemon>) {
+        if (!pokemonList.isEmpty()) {
+            this.pokemonList.addAll(pokemonList)
+            notifyDataSetChanged()
+        }
     }
 
 }
