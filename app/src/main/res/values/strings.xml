@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">PokeApp</string>
 
-    <string name="item_pokemon_list">%d - %s</string>
+    <string name="item_pokemon_list_id">#%s</string>
+    <string name="item_pokemon_list_name">%s</string>
     <string name="pokemon_detail_name">Name: %s</string>
     <string name="pokemon_detail_type">Type: %s</string>
     <string name="pokemon_detail_height">HT: %s</string>

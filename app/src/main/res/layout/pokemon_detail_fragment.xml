@@ -14,7 +14,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_ececec">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -36,60 +37,34 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/master_img_ll"
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/pokemon_detail_img"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_height="300dp"
+                        android:layout_margin="20dp"
+                        android:padding="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_pokemon_launcher_icon" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/pokemon_detail_img"
-                            android:layout_width="180dp"
-                            android:layout_height="300dp"
-                            android:layout_margin="20dp"
-                            android:background="@drawable/background_frame_pokemon_detail"
-                            android:padding="10dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <LinearLayout
-                            android:id="@+id/master_ll_hp"
-                            android:layout_width="150dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/background_hp_detail"
-                            android:gravity="center">
-
-                            <TextView
-                                android:id="@+id/pokemon_hp_txt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/color_000000"
-                                android:textSize="12sp"
-                                tools:text="42/42" />
-                        </LinearLayout>
-                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/pokemon_name_txt"
                         style="@style/TextViewStyle"
                         android:layout_marginStart="10dp"
-                        app:layout_constraintBottom_toTopOf="@id/pokemon_type_txt"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/master_img_ll"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/pokemon_detail_img"
                         tools:text="Name: Bulbasaur" />
 
                     <TextView
                         android:id="@+id/pokemon_type_txt"
                         style="@style/TextViewStyle"
                         android:layout_marginStart="10dp"
-                        app:layout_constraintBottom_toTopOf="@id/pokemon_weight_txt"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/master_img_ll"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/pokemon_name_txt"
                         tools:text="Type: GRASS" />
 
@@ -97,9 +72,8 @@
                         android:id="@+id/pokemon_weight_txt"
                         style="@style/TextViewStyle"
                         android:layout_marginStart="10dp"
-                        app:layout_constraintBottom_toTopOf="@id/pokemon_height_txt"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/master_img_ll"
+                        app:layout_constraintEnd_toStartOf="@id/pokemon_height_txt"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/pokemon_type_txt"
                         tools:text="WT: 54" />
 
@@ -107,11 +81,34 @@
                         android:id="@+id/pokemon_height_txt"
                         style="@style/TextViewStyle"
                         android:layout_marginStart="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/pokemon_weight_txt"
+                        app:layout_constraintTop_toBottomOf="@id/pokemon_type_txt"
+                        tools:text="HT: 7" />
+
+                    <LinearLayout
+                        android:id="@+id/master_ll_hp"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/background_hp_detail"
+                        android:gravity="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/master_img_ll"
-                        app:layout_constraintTop_toBottomOf="@id/pokemon_weight_txt"
-                        tools:text="HT: 7" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/pokemon_height_txt">
+
+                        <TextView
+                            android:id="@+id/pokemon_hp_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_000000"
+                            android:textSize="14sp"
+                            tools:text="42/42" />
+                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -131,8 +128,6 @@
                         android:id="@+id/pokemon_atk_txt"
                         style="@style/TextViewStatsStyle"
                         android:layout_marginEnd="10dp"
-                        android:background="@drawable/background_frame_stats"
-                        android:padding="20dp"
                         app:layout_constraintEnd_toStartOf="@id/pokemon_sp_atk_txt"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -143,8 +138,6 @@
                         style="@style/TextViewStatsStyle"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
-                        android:background="@drawable/background_frame_stats"
-                        android:padding="20dp"
                         app:layout_constraintEnd_toStartOf="@id/pokemon_sp_defense_txt"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/pokemon_atk_txt"
@@ -153,8 +146,6 @@
                     <TextView
                         android:id="@+id/pokemon_sp_atk_txt"
                         style="@style/TextViewStatsStyle"
-                        android:background="@drawable/background_frame_stats"
-                        android:padding="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/pokemon_atk_txt"
                         app:layout_constraintTop_toTopOf="parent"
@@ -164,8 +155,6 @@
                         android:id="@+id/pokemon_sp_defense_txt"
                         style="@style/TextViewStatsStyle"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/background_frame_stats"
-                        android:padding="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/pokemon_def_txt"
                         app:layout_constraintTop_toBottomOf="@id/pokemon_sp_atk_txt"
@@ -175,15 +164,13 @@
                         android:id="@+id/pokemon_speed_txt"
                         style="@style/TextViewStatsStyle"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/background_frame_stats"
-                        android:padding="20dp"
-                        app:layout_constraintEnd_toStartOf="@id/pokemon_sp_defense_txt"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/pokemon_def_txt"
+                        app:layout_constraintTop_toBottomOf="@id/pokemon_sp_defense_txt"
                         tools:text="Speed: 56" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <ProgressBar
                 android:id="@+id/progressbar"
                 android:layout_width="50dp"

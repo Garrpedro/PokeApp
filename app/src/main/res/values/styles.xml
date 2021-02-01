@@ -8,20 +8,34 @@
         <item name="fontFamily">@font/pokemon_font_regular</item>
     </style>
 
+
+    <style name="TextViewItemListStyle">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_000000</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="TextViewStyle">
+        <item name="android:padding">10dp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">true</item>
-        <item name="color">@color/color_000000</item>
+        <item name="android:textColor">@color/color_000000</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextViewStatsStyle">
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@drawable/background_frame_stats</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
-        <item name="color">@color/color_000000</item>
+        <item name="android:textColor">@color/color_737373</item>
         <item name="android:textSize">12sp</item>
     </style>
 </resources>

@@ -46,6 +46,7 @@ class PokemonDetailFragment : Fragment() {
     private fun fillDetail(pokemonDetail: PokemonHelper) {
         pokemon_detail_img.loadSvg(pokemonDetail.urlSprite)
         pokemon_name_txt.text = pokemonDetail.pokemonName
+        pokemon_hp_txt.text = pokemonDetail.pokemonHP
         pokemon_type_txt.text = pokemonDetail.pokemonType
         pokemon_weight_txt.text = pokemonDetail.pokemonWeight
         pokemon_height_txt.text = pokemonDetail.pokemonHeight

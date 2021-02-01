@@ -23,7 +23,8 @@ class PokemonListViewHolder constructor(
     private val pokemonListViewModel: PokemonListViewModel
 ) : RecyclerView.ViewHolder(dataBinding.root) {
 
-    private val txtPokemonName: TextView = itemView.item_pokemon_list_txt
+    private val txtPokemonId: TextView = itemView.item_pokemon_list_id_txt
+    private val txtPokemonName: TextView = itemView.item_pokemon_list_name_txt
     private val imgPokemon: AppCompatImageView = itemView.item_pokemon_list_img
 
 
@@ -34,10 +35,14 @@ class PokemonListViewHolder constructor(
         txtPokemonName.visibility = View.VISIBLE
         imgPokemon.visibility = View.VISIBLE
 
+        txtPokemonId.text =
+            itemView.context.getString(
+                R.string.item_pokemon_list_id,
+                result.id.toString().padStart(3, '0')
+            )
         txtPokemonName.text =
             itemView.context.getString(
-                R.string.item_pokemon_list,
-                result.id,
+                R.string.item_pokemon_list_name,
                 result.name.capitalize()
             )
 

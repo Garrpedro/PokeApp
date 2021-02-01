@@ -10,13 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokeapp.databinding.PokemonListFragmentBinding
-import com.example.pokeapp.service.model.Pokemon
 import com.example.pokeapp.utils.Constant.LIMIT
 import com.example.pokeapp.view.adapter.PaginationScrollListener
 import com.example.pokeapp.view.adapter.PokemonListAdapter
 import com.example.pokeapp.viewmodel.PokemonListViewModel
 import kotlinx.android.synthetic.main.pokemon_list_fragment.*
-import java.util.*
 
 class PokemonListFragment : Fragment() {
 
@@ -45,7 +43,6 @@ class PokemonListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (binding?.pokemonListFrag?.getPokemonLisAllSize()!! == 0) {
             binding?.pokemonListFrag?.getPokemonList()
-
             setupAdapter()
         }
         setupObservers()

@@ -7,8 +7,17 @@
     <color name="color_ffffff">#FFFFFF</color>
     <color name="color_000000">#000000</color>
     <color name="color_b1b8bc">#B1B8BC</color>
-    <color name="color_00ff00">#00FF00</color>
+    <color name="color_3cb371">#3CB371</color>
     <color name="color_0db1b8bc">#0DB1B8BC</color>
     <color name="color_cf1b48">#CF1B48</color>
     <color name="color_ffa500">#FFA500</color>
+    <color name="color_e2e2e2">#e2e2e2</color>
+    <color name="color_ececec">#ececec</color>
+    <color name="color_737373">#737373</color>
+    <color name="color_fcfcfc">#fcfcfc</color>
+    <color name="color_9999ff">#9999ff</color>
+    <color name="color_F19114">#F19114</color>
+    <color name="color_c07410">#c07410</color>
+    <color name="color_1f78da">#1f78da</color>
+
 </resources>
